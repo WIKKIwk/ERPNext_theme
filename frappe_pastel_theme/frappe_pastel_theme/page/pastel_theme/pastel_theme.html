@@ -8,13 +8,15 @@
 		</button>
 	</div>
 
-	<div class="pastel-settings-panel" data-panel="theme" role="tabpanel">
-		<div class="text-muted pastel-theme-description">{{ __("Choose a theme preset for your account.") }}</div>
-		<div class="pastel-theme-grid"></div>
-	</div>
+	<div class="pastel-settings-content">
+		<div class="pastel-settings-panel active" data-panel="theme" role="tabpanel" aria-hidden="false">
+			<div class="text-muted pastel-theme-description">{{ __("Choose a theme preset for your account.") }}</div>
+			<div class="pastel-theme-grid"></div>
+		</div>
 
-	<div class="pastel-settings-panel" data-panel="font" role="tabpanel">
-		<div class="text-muted pastel-font-description">{{ __("Choose a font preset for your account.") }}</div>
-		<div class="pastel-font-grid"></div>
+		<div class="pastel-settings-panel" data-panel="font" role="tabpanel" aria-hidden="true">
+			<div class="text-muted pastel-font-description">{{ __("Choose a font preset for your account.") }}</div>
+			<div class="pastel-font-grid"></div>
+		</div>
 	</div>
 </div>

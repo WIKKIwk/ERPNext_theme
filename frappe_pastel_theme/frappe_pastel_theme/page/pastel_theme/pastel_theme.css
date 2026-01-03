@@ -20,6 +20,8 @@
 	line-height: 1;
 	color: var(--text-color);
 	cursor: pointer;
+	transition: background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease,
+		transform 0.18s ease;
 }
 
 .pastel-settings-tab:hover {
@@ -30,6 +32,7 @@
 	background: var(--card-bg);
 	border-color: var(--dark-border-color);
 	box-shadow: var(--shadow-sm);
+	transform: translateY(-1px);
 }
 
 .pastel-settings-tab:focus-visible {
@@ -37,12 +40,32 @@
 	outline-offset: 2px;
 }
 
-.pastel-settings-panel {
+.pastel-settings-content {
 	margin-top: 14px;
 }
 
-.pastel-settings-panel[hidden] {
-	display: none !important;
+.pastel-settings-panel {
+	overflow: hidden;
+	max-height: 0;
+	opacity: 0;
+	transform: translateY(8px);
+	pointer-events: none;
+	transition: max-height 0.32s ease, opacity 0.2s ease, transform 0.2s ease;
+	will-change: opacity, transform;
+}
+
+.pastel-settings-panel.active {
+	max-height: 9999px;
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.pastel-settings-tab,
+	.pastel-settings-panel {
+		transition: none;
+	}
 }
 
 .pastel-theme-grid {

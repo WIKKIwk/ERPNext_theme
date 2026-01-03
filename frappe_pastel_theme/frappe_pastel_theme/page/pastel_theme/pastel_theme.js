@@ -28,7 +28,14 @@ frappe.pages["pastel-theme"].on_page_load = function (wrapper) {
 		});
 
 		root.querySelectorAll(".pastel-settings-panel").forEach((panel) => {
-			panel.hidden = (panel.getAttribute("data-panel") || "") !== tab;
+			const is_active = (panel.getAttribute("data-panel") || "") === tab;
+			panel.classList.toggle("active", is_active);
+			panel.setAttribute("aria-hidden", is_active ? "false" : "true");
+			try {
+				panel.inert = !is_active;
+			} catch (e) {
+				// ignore
+			}
 		});
 
 		try {

@@ -1,0 +1,192 @@
+@font-face {
+	font-family: "Nunito";
+	src: url("/assets/frappe_pastel_theme/fonts/nunito/Nunito-Variable.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 200 1000;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Fredoka";
+	src: url("/assets/frappe_pastel_theme/fonts/fredoka/Fredoka-Variable.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lora";
+	src: url("/assets/frappe_pastel_theme/fonts/lora/Lora-Variable.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 200 900;
+	font-display: swap;
+}
+
+html[data-theme="light"][data-pastel-theme="soft-blue"] {
+	--bg-color: #f5f9ff;
+	--navbar-bg: #eef4ff;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #e6efff;
+	--subtle-fg: #dbe8ff;
+	--control-bg: #e6efff;
+	--control-bg-on-gray: #dbe8ff;
+	--fg-hover-color: #dbe8ff;
+	--border-color: #c9dcff;
+	--dark-border-color: #b2ccff;
+	--table-border-color: #c9dcff;
+	--highlight-color: #eef4ff;
+	--sidebar-select-color: #dbe8ff;
+
+	--primary: #2563eb;
+	--btn-primary: #2563eb;
+	--primary-color: #1e40af;
+}
+
+html[data-theme="light"][data-pastel-theme="mint"] {
+	--bg-color: #f3fff8;
+	--navbar-bg: #e8fff2;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #def7ec;
+	--subtle-fg: #c9f0dd;
+	--control-bg: #def7ec;
+	--control-bg-on-gray: #c9f0dd;
+	--fg-hover-color: #c9f0dd;
+	--border-color: #b7e6d0;
+	--dark-border-color: #93d6b7;
+	--table-border-color: #b7e6d0;
+	--highlight-color: #e8fff2;
+	--sidebar-select-color: #c9f0dd;
+
+	--primary: #059669;
+	--btn-primary: #059669;
+	--primary-color: #047857;
+}
+
+html[data-theme="light"][data-pastel-theme="warm-neutral"] {
+	--bg-color: #fffbf5;
+	--navbar-bg: #fff3e3;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #f7ead7;
+	--subtle-fg: #f0dcc2;
+	--control-bg: #f7ead7;
+	--control-bg-on-gray: #f0dcc2;
+	--fg-hover-color: #f0dcc2;
+	--border-color: #ebd2b0;
+	--dark-border-color: #d9b889;
+	--table-border-color: #ebd2b0;
+	--highlight-color: #fff3e3;
+	--sidebar-select-color: #f0dcc2;
+
+	--primary: #b45309;
+	--btn-primary: #b45309;
+	--primary-color: #92400e;
+}
+
+html[data-theme="light"][data-pastel-theme="soft-rose"] {
+	--bg-color: #fff7fa;
+	--navbar-bg: #ffeaf3;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #ffeaf3;
+	--subtle-fg: #f8cfe0;
+	--control-bg: #ffeaf3;
+	--control-bg-on-gray: #f8cfe0;
+	--fg-hover-color: #f8cfe0;
+	--border-color: #f3bfd3;
+	--dark-border-color: #eaa7c3;
+	--table-border-color: #f3bfd3;
+	--highlight-color: #ffeaf3;
+	--sidebar-select-color: #f8cfe0;
+
+	--primary: #db2777;
+	--btn-primary: #db2777;
+	--primary-color: #be185d;
+}
+
+html[data-theme="light"][data-pastel-theme="olive-gray"] {
+	--bg-color: #f7f7f2;
+	--navbar-bg: #eef0e6;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #e8ebdd;
+	--subtle-fg: #d6dbc7;
+	--control-bg: #e8ebdd;
+	--control-bg-on-gray: #d6dbc7;
+	--fg-hover-color: #d6dbc7;
+	--border-color: #c6ceb2;
+	--dark-border-color: #b0bb93;
+	--table-border-color: #c6ceb2;
+	--highlight-color: #eef0e6;
+	--sidebar-select-color: #d6dbc7;
+
+	--primary: #6b7b3a;
+	--btn-primary: #6b7b3a;
+	--primary-color: #55652c;
+}
+
+html[data-theme="light"][data-pastel-theme="calm-lavender-gray"] {
+	--bg-color: #f8f7ff;
+	--navbar-bg: #f0effb;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #ebe9ff;
+	--subtle-fg: #dcd7f2;
+	--control-bg: #ebe9ff;
+	--control-bg-on-gray: #dcd7f2;
+	--fg-hover-color: #dcd7f2;
+	--border-color: #cfc8ee;
+	--dark-border-color: #b9b0e6;
+	--table-border-color: #cfc8ee;
+	--highlight-color: #f0effb;
+	--sidebar-select-color: #dcd7f2;
+
+	--primary: #7c3aed;
+	--btn-primary: #7c3aed;
+	--primary-color: #5b21b6;
+}
+
+.widget.pastel-theme-widget {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+.widget.pastel-theme-widget .widget-head,
+.widget.pastel-theme-widget .widget-footer {
+	display: none;
+}
+
+.widget.pastel-theme-widget .widget-body {
+	padding: 0;
+}
+
+html[data-pastel-font="system-ui"] {
+	--font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu",
+		"Helvetica Neue", Arial, sans-serif;
+}
+
+html[data-pastel-font="serif"] {
+	--font-stack: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+html[data-pastel-font="mono"] {
+	--font-stack: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace;
+}
+
+html[data-pastel-font="nunito"] {
+	--font-stack: "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Ubuntu", "Helvetica Neue", Arial, sans-serif;
+}
+
+html[data-pastel-font="fredoka"] {
+	--font-stack: "Fredoka", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Roboto", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+}
+
+html[data-pastel-font="lora"] {
+	--font-stack: "Lora", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}

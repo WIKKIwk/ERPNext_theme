@@ -1,0 +1,26 @@
+[
+	{
+		"doctype": "Custom Field",
+		"dt": "User",
+		"fieldname": "pastel_theme",
+		"fieldtype": "Select",
+		"insert_after": "desk_theme",
+		"label": "Pastel Theme",
+		"module": "Frappe Pastel Theme",
+		"name": "User-pastel_theme",
+		"no_copy": 1,
+		"options": "\nsoft-blue\nmint\nwarm-neutral\nsoft-rose\nolive-gray\ncalm-lavender-gray"
+	},
+	{
+		"doctype": "Custom Field",
+		"dt": "User",
+		"fieldname": "pastel_font",
+		"fieldtype": "Select",
+		"insert_after": "pastel_theme",
+		"label": "Pastel Font",
+		"module": "Frappe Pastel Theme",
+		"name": "User-pastel_font",
+		"no_copy": 1,
+		"options": "\nsystem-ui\nserif\nmono\nnunito\nfredoka\nlora"
+	}
+]

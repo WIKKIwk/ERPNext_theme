@@ -1,0 +1,39 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"custom_block_pastel_theme_selector\",\"type\":\"custom_block\",\"data\":{\"custom_block_name\":\"Pastel Theme Selector\",\"col\":12}}]",
+ "creation": "2026-01-03 00:00:00.000000",
+ "custom_blocks": [
+  {
+   "custom_block_name": "Pastel Theme Selector",
+   "label": "Pastel Theme Selector"
+  }
+ ],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "es-line-settings",
+ "color": "#60a5fa",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Theme Settings",
+ "links": [],
+ "modified": "2026-01-03 21:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe Pastel Theme",
+ "name": "Theme Settings",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "restrict_to_domain": "",
+ "roles": [
+  {
+   "role": "All"
+  }
+ ],
+ "sequence_id": 60.0,
+ "shortcuts": [],
+ "title": "Theme Settings"
+}

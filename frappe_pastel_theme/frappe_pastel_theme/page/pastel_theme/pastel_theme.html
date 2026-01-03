@@ -1,0 +1,20 @@
+<div class="pastel-theme-page">
+	<div class="pastel-settings-tabs" role="tablist" aria-label="{{ __('Theme Settings') }}">
+		<button type="button" class="pastel-settings-tab active" data-tab="theme" role="tab" aria-selected="true">
+			{{ __("Theme") }}
+		</button>
+		<button type="button" class="pastel-settings-tab" data-tab="font" role="tab" aria-selected="false">
+			{{ __("Font") }}
+		</button>
+	</div>
+
+	<div class="pastel-settings-panel" data-panel="theme" role="tabpanel">
+		<div class="text-muted pastel-theme-description">{{ __("Choose a theme preset for your account.") }}</div>
+		<div class="pastel-theme-grid"></div>
+	</div>
+
+	<div class="pastel-settings-panel" data-panel="font" role="tabpanel">
+		<div class="text-muted pastel-font-description">{{ __("Choose a font preset for your account.") }}</div>
+		<div class="pastel-font-grid"></div>
+	</div>
+</div>

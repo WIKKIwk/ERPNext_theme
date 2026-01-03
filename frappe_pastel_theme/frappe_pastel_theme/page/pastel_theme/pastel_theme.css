@@ -1,0 +1,135 @@
+.pastel-theme-page {
+	padding: 8px 0;
+}
+
+.pastel-settings-tabs {
+	display: inline-flex;
+	gap: 6px;
+	padding: 4px;
+	background: var(--control-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 999px;
+}
+
+.pastel-settings-tab {
+	border: 1px solid transparent;
+	background: transparent;
+	border-radius: 999px;
+	padding: 8px 14px;
+	font-weight: 600;
+	line-height: 1;
+	color: var(--text-color);
+	cursor: pointer;
+}
+
+.pastel-settings-tab:hover {
+	background: var(--subtle-accent);
+}
+
+.pastel-settings-tab.active {
+	background: var(--card-bg);
+	border-color: var(--dark-border-color);
+	box-shadow: var(--shadow-sm);
+}
+
+.pastel-settings-tab:focus-visible {
+	outline: 2px solid var(--primary);
+	outline-offset: 2px;
+}
+
+.pastel-settings-panel {
+	margin-top: 14px;
+}
+
+.pastel-settings-panel[hidden] {
+	display: none !important;
+}
+
+.pastel-theme-grid {
+	margin-top: 16px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 12px;
+}
+
+.pastel-font-grid {
+	margin-top: 16px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 12px;
+}
+
+.pastel-theme-card {
+	background: var(--card-bg);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius-md, 10px);
+	padding: 12px;
+	cursor: pointer;
+	transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.pastel-theme-card:hover {
+	border-color: var(--dark-border-color);
+	box-shadow: var(--shadow-sm);
+}
+
+.pastel-theme-card.selected {
+	border-color: var(--primary);
+	box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+.pastel-theme-card-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.pastel-theme-preview {
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.pastel-theme-preview .navbar {
+	height: 14px;
+	background: var(--pt-navbar);
+}
+
+.pastel-theme-preview .body {
+	padding: 10px;
+	background: var(--pt-bg);
+}
+
+.pastel-theme-preview .chip {
+	height: 10px;
+	width: 64%;
+	border-radius: 999px;
+	background: var(--pt-subtle);
+	margin-bottom: 8px;
+}
+
+.pastel-theme-preview .button {
+	height: 10px;
+	width: 40%;
+	border-radius: 999px;
+	background: var(--pt-primary);
+}
+
+.pastel-font-preview {
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	padding: 12px;
+	background: var(--bg-color);
+}
+
+.pastel-font-preview .sample {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.pastel-font-preview .caption {
+	margin-top: 4px;
+	font-size: 12px;
+}

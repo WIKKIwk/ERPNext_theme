@@ -1,0 +1,22 @@
+{
+ "creation": "2026-01-03 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "fa fa-paint-brush",
+ "idx": 0,
+ "modified": "2026-01-03 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Frappe Pastel Theme",
+ "name": "pastel-theme",
+ "owner": "Administrator",
+ "page_name": "pastel-theme",
+ "roles": [
+  {
+   "role": "All"
+  }
+ ],
+ "script": null,
+ "standard": "Yes",
+ "style": null,
+ "title": "Theme Settings"
+}

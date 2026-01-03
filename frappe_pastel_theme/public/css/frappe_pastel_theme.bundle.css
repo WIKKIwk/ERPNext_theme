@@ -22,6 +22,30 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: "Manrope";
+	src: url("/assets/frappe_pastel_theme/fonts/manrope/Manrope-Variable.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 200 800;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Quicksand";
+	src: url("/assets/frappe_pastel_theme/fonts/quicksand/Quicksand-Variable.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 300 700;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Lexend";
+	src: url("/assets/frappe_pastel_theme/fonts/lexend/Lexend-Variable.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+}
+
 html[data-theme="light"][data-pastel-theme="soft-blue"] {
 	--bg-color: #f5f9ff;
 	--navbar-bg: #eef4ff;
@@ -148,6 +172,69 @@ html[data-theme="light"][data-pastel-theme="calm-lavender-gray"] {
 	--primary-color: #5b21b6;
 }
 
+html[data-theme="light"][data-pastel-theme="peach-cream"] {
+	--bg-color: #fff7f2;
+	--navbar-bg: #ffeadf;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #ffe3d5;
+	--subtle-fg: #ffd1bf;
+	--control-bg: #ffe3d5;
+	--control-bg-on-gray: #ffd1bf;
+	--fg-hover-color: #ffd1bf;
+	--border-color: #f6c5ad;
+	--dark-border-color: #e9ae90;
+	--table-border-color: #f6c5ad;
+	--highlight-color: #ffeadf;
+	--sidebar-select-color: #ffd1bf;
+
+	--primary: #f97316;
+	--btn-primary: #f97316;
+	--primary-color: #c2410c;
+}
+
+html[data-theme="light"][data-pastel-theme="aqua-breeze"] {
+	--bg-color: #f3fffe;
+	--navbar-bg: #e6fffd;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #d9fbf7;
+	--subtle-fg: #b6f2ea;
+	--control-bg: #d9fbf7;
+	--control-bg-on-gray: #b6f2ea;
+	--fg-hover-color: #b6f2ea;
+	--border-color: #a6e6dd;
+	--dark-border-color: #7fd8cc;
+	--table-border-color: #a6e6dd;
+	--highlight-color: #e6fffd;
+	--sidebar-select-color: #b6f2ea;
+
+	--primary: #0f766e;
+	--btn-primary: #0f766e;
+	--primary-color: #115e59;
+}
+
+html[data-theme="light"][data-pastel-theme="butter-yellow"] {
+	--bg-color: #fffef5;
+	--navbar-bg: #fff7cc;
+	--fg-color: #ffffff;
+	--card-bg: #ffffff;
+	--subtle-accent: #fff1b0;
+	--subtle-fg: #fde7a6;
+	--control-bg: #fff1b0;
+	--control-bg-on-gray: #fde7a6;
+	--fg-hover-color: #fde7a6;
+	--border-color: #f5d86b;
+	--dark-border-color: #e6c54f;
+	--table-border-color: #f5d86b;
+	--highlight-color: #fff7cc;
+	--sidebar-select-color: #fde7a6;
+
+	--primary: #ca8a04;
+	--btn-primary: #ca8a04;
+	--primary-color: #a16207;
+}
+
 .widget.pastel-theme-widget {
 	background: transparent;
 	border: none;
@@ -189,4 +276,19 @@ html[data-pastel-font="fredoka"] {
 
 html[data-pastel-font="lora"] {
 	--font-stack: "Lora", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+html[data-pastel-font="manrope"] {
+	--font-stack: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Ubuntu", "Helvetica Neue", Arial, sans-serif;
+}
+
+html[data-pastel-font="quicksand"] {
+	--font-stack: "Quicksand", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+		"Roboto", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+}
+
+html[data-pastel-font="lexend"] {
+	--font-stack: "Lexend", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+		"Ubuntu", "Helvetica Neue", Arial, sans-serif;
 }

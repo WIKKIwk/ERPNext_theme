@@ -2,8 +2,19 @@ import frappe
 from frappe import _
 
 
-ALLOWED_THEMES = {"", "soft-blue", "mint", "warm-neutral", "soft-rose", "olive-gray", "calm-lavender-gray"}
-ALLOWED_FONTS = {"", "system-ui", "serif", "mono", "nunito", "fredoka", "lora"}
+ALLOWED_THEMES = {
+	"",
+	"soft-blue",
+	"mint",
+	"warm-neutral",
+	"soft-rose",
+	"olive-gray",
+	"calm-lavender-gray",
+	"peach-cream",
+	"aqua-breeze",
+	"butter-yellow",
+}
+ALLOWED_FONTS = {"", "system-ui", "serif", "mono", "nunito", "fredoka", "lora", "manrope", "quicksand", "lexend"}
 
 
 @frappe.whitelist()

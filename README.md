@@ -10,6 +10,9 @@ Frappe/ERPNext Desk uchun **har bir userga alohida** theme va font presetlari.
 - `soft-rose` (Soft Rose)
 - `olive-gray` (Olive Gray)
 - `calm-lavender-gray` (Calm Lavender Gray)
+- `peach-cream` (Peach Cream)
+- `aqua-breeze` (Aqua Breeze)
+- `butter-yellow` (Butter Yellow)
 
 ## Font presetlar
 
@@ -19,6 +22,9 @@ Frappe/ERPNext Desk uchun **har bir userga alohida** theme va font presetlari.
 - `nunito` (Nunito)
 - `fredoka` (Fredoka)
 - `lora` (Lora)
+- `manrope` (Manrope)
+- `quicksand` (Quicksand)
+- `lexend` (Lexend)
 
 Tanlovlar boshqa userlarga taʼsir qilmaydi.
 

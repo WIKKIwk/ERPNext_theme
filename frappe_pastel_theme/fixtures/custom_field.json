@@ -9,7 +9,7 @@
 		"module": "Frappe Pastel Theme",
 		"name": "User-pastel_theme",
 		"no_copy": 1,
-		"options": "\nsoft-blue\nmint\nwarm-neutral\nsoft-rose\nolive-gray\ncalm-lavender-gray"
+		"options": "\nsoft-blue\nmint\nwarm-neutral\nsoft-rose\nolive-gray\ncalm-lavender-gray\npeach-cream\naqua-breeze\nbutter-yellow"
 	},
 	{
 		"doctype": "Custom Field",
@@ -21,6 +21,6 @@
 		"module": "Frappe Pastel Theme",
 		"name": "User-pastel_font",
 		"no_copy": 1,
-		"options": "\nsystem-ui\nserif\nmono\nnunito\nfredoka\nlora"
+		"options": "\nsystem-ui\nserif\nmono\nnunito\nfredoka\nlora\nmanrope\nquicksand\nlexend"
 	}
 ]

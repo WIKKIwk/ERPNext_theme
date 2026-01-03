@@ -8,6 +8,9 @@
 		{ key: "soft-rose", label: __("Soft Rose") },
 		{ key: "olive-gray", label: __("Olive Gray") },
 		{ key: "calm-lavender-gray", label: __("Calm Lavender Gray") },
+		{ key: "peach-cream", label: __("Peach Cream") },
+		{ key: "aqua-breeze", label: __("Aqua Breeze") },
+		{ key: "butter-yellow", label: __("Butter Yellow") },
 	];
 
 	const PALETTE = {
@@ -28,6 +31,9 @@
 			subtle: "#dcd7f2",
 			primary: "#7c3aed",
 		},
+		"peach-cream": { bg: "#fff7f2", navbar: "#ffeadf", subtle: "#ffd1bf", primary: "#f97316" },
+		"aqua-breeze": { bg: "#f3fffe", navbar: "#e6fffd", subtle: "#b6f2ea", primary: "#0f766e" },
+		"butter-yellow": { bg: "#fffef5", navbar: "#fff7cc", subtle: "#fde7a6", primary: "#ca8a04" },
 	};
 
 	const FONTS = [
@@ -37,6 +43,9 @@
 		{ key: "nunito", label: __("Nunito (Rounded)") },
 		{ key: "fredoka", label: __("Fredoka (Playful)") },
 		{ key: "lora", label: __("Lora (Serif)") },
+		{ key: "manrope", label: __("Manrope (Modern)") },
+		{ key: "quicksand", label: __("Quicksand (Soft)") },
+		{ key: "lexend", label: __("Lexend (Readable)") },
 	];
 
 	const FONT_STACKS = {
@@ -48,6 +57,9 @@
 		nunito: `"Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", Arial, sans-serif`,
 		fredoka: `"Fredoka", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", Arial, sans-serif`,
 		lora: `"Lora", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`,
+		manrope: `"Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", Arial, sans-serif`,
+		quicksand: `"Quicksand", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", Arial, sans-serif`,
+		lexend: `"Lexend", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Ubuntu", "Helvetica Neue", Arial, sans-serif`,
 	};
 
 	const apply_theme = (key) => {

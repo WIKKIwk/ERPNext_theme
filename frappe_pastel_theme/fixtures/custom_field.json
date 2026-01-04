@@ -22,5 +22,53 @@
 		"name": "User-pastel_font",
 		"no_copy": 1,
 		"options": "\nsystem-ui\nserif\nmono\nnunito\nfredoka\nlora\nmanrope\nquicksand\nlexend"
+	},
+	{
+		"doctype": "Custom Field",
+		"dt": "User",
+		"default": "1",
+		"fieldname": "pastel_enable_animations",
+		"fieldtype": "Check",
+		"insert_after": "pastel_font",
+		"label": "Pastel Animations",
+		"module": "Frappe Pastel Theme",
+		"name": "User-pastel_enable_animations",
+		"no_copy": 1
+	},
+	{
+		"doctype": "Custom Field",
+		"dt": "User",
+		"default": "0",
+		"fieldname": "pastel_page_transitions",
+		"fieldtype": "Check",
+		"insert_after": "pastel_enable_animations",
+		"label": "Pastel Page Transitions",
+		"module": "Frappe Pastel Theme",
+		"name": "User-pastel_page_transitions",
+		"no_copy": 1
+	},
+	{
+		"doctype": "Custom Field",
+		"dt": "User",
+		"fieldname": "pastel_page_transition_style",
+		"fieldtype": "Select",
+		"insert_after": "pastel_page_transitions",
+		"label": "Pastel Page Transition Style",
+		"module": "Frappe Pastel Theme",
+		"name": "User-pastel_page_transition_style",
+		"no_copy": 1,
+		"options": "\nsoft\nslide\nzoom\nglide\nstack"
+	},
+	{
+		"doctype": "Custom Field",
+		"dt": "User",
+		"default": "1",
+		"fieldname": "pastel_startup_animation",
+		"fieldtype": "Check",
+		"insert_after": "pastel_page_transition_style",
+		"label": "Pastel Startup Animation",
+		"module": "Frappe Pastel Theme",
+		"name": "User-pastel_startup_animation",
+		"no_copy": 1
 	}
 ]

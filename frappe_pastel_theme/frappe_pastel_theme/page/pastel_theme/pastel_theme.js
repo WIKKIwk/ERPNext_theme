@@ -13,7 +13,7 @@ frappe.pages["pastel-theme"].on_page_load = function (wrapper) {
 	const root = page.body.get(0);
 
 	const STORAGE_KEY = "frappe_pastel_theme.settings_tab";
-	const VALID_TABS = new Set(["theme", "font"]);
+	const VALID_TABS = new Set(["theme", "font", "animations"]);
 	let current_tab = "theme";
 
 	const update_indicator = () => {
@@ -91,6 +91,8 @@ frappe.pages["pastel-theme"].on_page_load = function (wrapper) {
 
 	api?.render_theme_picker?.(root, { include_default: true });
 	api?.render_font_picker?.(root, { include_default: true });
+	api?.render_animations_picker?.(root);
+	api?.apply_local_preferences?.(root);
 
 	requestAnimationFrame(update_indicator);
 

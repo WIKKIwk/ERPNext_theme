@@ -1,10 +1,67 @@
 <div class="pastel-theme-page">
 	<div class="pastel-settings-tabs" role="tablist" aria-label="{{ __('Theme Settings') }}">
-		<button type="button" class="pastel-settings-tab active" data-tab="theme" role="tab" aria-selected="true">
-			{{ __("Theme") }}
+		<button
+			type="button"
+			class="pastel-settings-tab active"
+			data-tab="theme"
+			role="tab"
+			aria-selected="true"
+		>
+			<span class="pt-tab-icon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none">
+					<path
+						d="M12 3a9 9 0 100 18h1a2 2 0 002-2 2 2 0 012-2h1a4 4 0 000-8h-1a2 2 0 01-2-2 2 2 0 00-2-2h-1z"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+					<circle cx="8" cy="10" r="1" fill="currentColor" />
+					<circle cx="12" cy="8" r="1" fill="currentColor" />
+					<circle cx="16" cy="10" r="1" fill="currentColor" />
+				</svg>
+			</span>
+			<span class="pt-tab-label">{{ __("Theme") }}</span>
 		</button>
 		<button type="button" class="pastel-settings-tab" data-tab="font" role="tab" aria-selected="false">
-			{{ __("Font") }}
+			<span class="pt-tab-icon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none">
+					<path
+						d="M5 20L11 4h2l6 16"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+					<path
+						d="M8 14h8"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</span>
+			<span class="pt-tab-label">{{ __("Font") }}</span>
+		</button>
+		<button type="button" class="pastel-settings-tab" data-tab="animations" role="tab" aria-selected="false">
+			<span class="pt-tab-icon" aria-hidden="true">
+				<svg viewBox="0 0 24 24" fill="none">
+					<path
+						d="M12 2l1.4 4.2L18 8l-4.6 1.8L12 14l-1.4-4.2L6 8l4.6-1.8L12 2z"
+						stroke="currentColor"
+						stroke-width="1.8"
+						stroke-linejoin="round"
+					/>
+					<path
+						d="M19 13l.9 2.6L22 16.5l-2.1.9L19 20l-.9-2.6L16 16.5l2.1-.9L19 13z"
+						stroke="currentColor"
+						stroke-width="1.6"
+						stroke-linejoin="round"
+					/>
+				</svg>
+			</span>
+			<span class="pt-tab-label">{{ __("Animations") }}</span>
 		</button>
 	</div>
 
@@ -17,6 +74,11 @@
 		<div class="pastel-settings-panel" data-panel="font" role="tabpanel" aria-hidden="true">
 			<div class="text-muted pastel-font-description">{{ __("Choose a font preset for your account.") }}</div>
 			<div class="pastel-font-grid"></div>
+		</div>
+
+		<div class="pastel-settings-panel" data-panel="animations" role="tabpanel" aria-hidden="true">
+			<div class="text-muted pastel-animations-description">{{ __("Control motion and page transitions.") }}</div>
+			<div class="pastel-animations-grid"></div>
 		</div>
 	</div>
 </div>

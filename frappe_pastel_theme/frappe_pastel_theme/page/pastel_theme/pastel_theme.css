@@ -68,21 +68,72 @@
 }
 
 .pastel-settings-panel {
+	position: relative;
 	overflow: hidden;
 	max-height: 0;
 	opacity: 0;
-	transform: translateY(10px) scale(0.995);
+	transform: translateY(14px) scale(0.985) rotate(-0.25deg);
 	pointer-events: none;
-	transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease,
-		transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+	transition: max-height 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s ease,
+		transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
 	will-change: opacity, transform;
+}
+
+.pastel-settings-panel::after {
+	content: "";
+	position: absolute;
+	inset: -10px;
+	pointer-events: none;
+	background: linear-gradient(
+		90deg,
+		rgba(255, 255, 255, 0) 0%,
+		rgba(255, 255, 255, 0.28) 35%,
+		rgba(255, 255, 255, 0) 70%
+	);
+	transform: translateX(-60%);
+	opacity: 0;
+	filter: blur(10px);
 }
 
 .pastel-settings-panel.active {
 	max-height: 9999px;
 	opacity: 1;
-	transform: translateY(0) scale(1);
+	transform: translateY(0) scale(1) rotate(0);
 	pointer-events: auto;
+	animation: pt-panel-in 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pastel-settings-panel.active::after {
+	animation: pt-panel-shimmer 0.68s ease;
+}
+
+@keyframes pt-panel-in {
+	0% {
+		opacity: 0;
+		transform: translateY(16px) scale(0.98) rotate(-0.35deg);
+	}
+	60% {
+		opacity: 1;
+		transform: translateY(-2px) scale(1.01) rotate(0.12deg);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1) rotate(0);
+	}
+}
+
+@keyframes pt-panel-shimmer {
+	0% {
+		opacity: 0;
+		transform: translateX(-70%);
+	}
+	40% {
+		opacity: 0.14;
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(70%);
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -90,6 +141,11 @@
 	.pastel-settings-panel,
 	.pastel-settings-tabs::before {
 		transition: none;
+	}
+
+	.pastel-settings-panel.active,
+	.pastel-settings-panel.active::after {
+		animation: none;
 	}
 }
 

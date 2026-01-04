@@ -764,18 +764,6 @@
 
 			const original = proto.change_to;
 			proto.change_to = function (label) {
-				if (should_animate() && typeof document.startViewTransition === "function") {
-					let result;
-					try {
-						document.startViewTransition(() => {
-							result = original.call(this, label);
-						});
-						return result;
-					} catch (e) {
-						// fall back below
-					}
-				}
-
 				const page = original.call(this, label);
 				if (should_animate()) animate_page_enter(page);
 				return page;

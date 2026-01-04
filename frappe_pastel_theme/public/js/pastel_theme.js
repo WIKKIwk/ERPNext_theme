@@ -256,7 +256,9 @@
 	};
 
 	const apply_local_preferences = (root) => {
-		const page = root?.querySelector?.(".pastel-theme-page");
+		const page = root?.classList?.contains?.("pastel-theme-page")
+			? root
+			: root?.querySelector?.(".pastel-theme-page");
 		if (!page) return;
 
 		page.setAttribute("data-pt-animations", get_boot_enable_animations() ? "1" : "0");

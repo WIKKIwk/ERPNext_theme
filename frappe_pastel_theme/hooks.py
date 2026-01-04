@@ -8,4 +8,4 @@ app_license = "MIT"
 app_include_css = "frappe_pastel_theme.bundle.css"
 app_include_js = "frappe_pastel_theme.bundle.js"
 
-boot_session = ["frappe_pastel_theme.boot.add_pastel_theme_to_bootinfo"]
+extend_bootinfo = ["frappe_pastel_theme.boot.add_pastel_theme_to_bootinfo"]

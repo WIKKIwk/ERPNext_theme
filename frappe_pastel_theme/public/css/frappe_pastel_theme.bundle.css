@@ -365,7 +365,7 @@ html[data-pastel-page-transitions="1"][data-pastel-animations="1"][data-pastel-p
 html[data-pastel-page-transitions="1"][data-pastel-animations="1"][data-pastel-page-transition-style="zoom"]
 	.page-container.pt-page-enter {
 	animation-name: pt-page-enter-zoom;
-	will-change: opacity, transform, filter;
+	will-change: opacity, transform;
 }
 
 html[data-pastel-page-transitions="1"][data-pastel-animations="1"][data-pastel-page-transition-style="glide"]

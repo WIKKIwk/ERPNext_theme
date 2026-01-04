@@ -14,12 +14,32 @@ frappe.pages["pastel-theme"].on_page_load = function (wrapper) {
 
 	const STORAGE_KEY = "frappe_pastel_theme.settings_tab";
 	const VALID_TABS = new Set(["theme", "font"]);
+	let current_tab = "theme";
+
+	const update_indicator = () => {
+		const tabs = root?.querySelector?.(".pastel-settings-tabs");
+		if (!tabs) return;
+
+		const btn = tabs.querySelector(`.pastel-settings-tab[data-tab="${current_tab}"]`);
+		if (!btn) return;
+
+		const tabs_rect = tabs.getBoundingClientRect();
+		const btn_rect = btn.getBoundingClientRect();
+
+		const x = Math.round(btn_rect.left - tabs_rect.left);
+		const w = Math.round(btn_rect.width);
+
+		tabs.style.setProperty("--pt-indicator-x", `${x}px`);
+		tabs.style.setProperty("--pt-indicator-w", `${w}px`);
+		tabs.style.setProperty("--pt-indicator-o", "1");
+	};
 
 	const set_active_tab = (tab) => {
 		tab = (tab || "theme").trim() || "theme";
 		if (!VALID_TABS.has(tab)) tab = "theme";
 
 		if (!root?.querySelectorAll) return;
+		current_tab = tab;
 
 		root.querySelectorAll(".pastel-settings-tab").forEach((btn) => {
 			const is_active = (btn.getAttribute("data-tab") || "") === tab;
@@ -37,6 +57,8 @@ frappe.pages["pastel-theme"].on_page_load = function (wrapper) {
 				// ignore
 			}
 		});
+
+		requestAnimationFrame(update_indicator);
 
 		try {
 			localStorage.setItem(STORAGE_KEY, tab);
@@ -69,6 +91,25 @@ frappe.pages["pastel-theme"].on_page_load = function (wrapper) {
 
 	api?.render_theme_picker?.(root, { include_default: true });
 	api?.render_font_picker?.(root, { include_default: true });
+
+	requestAnimationFrame(update_indicator);
+
+	let resize_raf = 0;
+	window.addEventListener(
+		"resize",
+		() => {
+			if (resize_raf) cancelAnimationFrame(resize_raf);
+			resize_raf = requestAnimationFrame(update_indicator);
+		},
+		{ passive: true }
+	);
+
+	try {
+		const obs = new MutationObserver(() => requestAnimationFrame(update_indicator));
+		obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-pastel-font"] });
+	} catch (e) {
+		// ignore
+	}
 
 	const get_first_url_arg = (keys) => {
 		if (!window.get_url_arg) return "";

@@ -66,6 +66,7 @@
 		animations: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M12 2l1.4 4.2L18 8l-4.6 1.8L12 14l-1.4-4.2L6 8l4.6-1.8L12 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M19 13l.9 2.6L22 16.5l-2.1.9L19 20l-.9-2.6L16 16.5l2.1-.9L19 13z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>`,
 		transitions: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M4 12h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
 		startup: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M21 12a9 9 0 11-3.1-6.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M21 3v6h-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+		loader: `<svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M12 3a9 9 0 109 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M21 12a9 9 0 00-9-9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity=".35"/></svg>`,
 	};
 
 	const PAGE_TRANSITION_STYLES = [
@@ -122,6 +123,10 @@
 		document.documentElement.setAttribute("data-pastel-startup-animation", enabled ? "1" : "0");
 	};
 
+	const apply_navigation_loader = (enabled) => {
+		document.documentElement.setAttribute("data-pastel-navigation-loader", enabled ? "1" : "0");
+	};
+
 	const apply_page_transition_style = (key) => {
 		const valid = new Set(PAGE_TRANSITION_STYLES.map((s) => s.key));
 		const style = valid.has(key) ? key : "soft";
@@ -151,6 +156,11 @@
 	const get_boot_startup_animation = () => {
 		if (!window.frappe?.boot) return true;
 		return to_bool(frappe.boot.pastel_startup_animation, true);
+	};
+
+	const get_boot_navigation_loader = () => {
+		if (!window.frappe?.boot) return true;
+		return to_bool(frappe.boot.pastel_navigation_loader, true);
 	};
 
 	const get_boot_page_transition_style = () => {
@@ -230,6 +240,24 @@
 			})
 			.catch((e) => {
 				apply_startup_animation(prev);
+				throw e;
+			});
+	};
+
+	const set_navigation_loader = (enabled) => {
+		const next = Boolean(enabled);
+		const prev = get_boot_navigation_loader();
+		apply_navigation_loader(next);
+
+		return frappe
+			.xcall("frappe_pastel_theme.api.set_pastel_navigation_loader", { enabled: next ? 1 : 0 })
+			.then((r) => {
+				const value = to_bool(r?.pastel_navigation_loader, next);
+				frappe.boot.pastel_navigation_loader = value ? 1 : 0;
+				return value;
+			})
+			.catch((e) => {
+				apply_navigation_loader(prev);
 				throw e;
 			});
 	};
@@ -439,7 +467,13 @@
 		const grid = root.querySelector(".pastel-animations-grid");
 		if (!grid) return;
 
-		const render = ({ enable_animations, page_transitions, transition_style, startup_animation }) => {
+		const render = ({
+			enable_animations,
+			page_transitions,
+			transition_style,
+			startup_animation,
+			navigation_loader,
+		}) => {
 			if (grid.replaceChildren) grid.replaceChildren();
 			else while (grid.firstChild) grid.removeChild(grid.firstChild);
 
@@ -471,6 +505,16 @@
 					disabled: !enable_animations,
 					disabled_hint: __("Enable Animations first."),
 					icon: ICONS.startup,
+				},
+				{
+					key: "navigation_loader",
+					label: __("Page loading"),
+					desc: __("Show a soft loader while pages load."),
+					enabled: navigation_loader,
+					setter: (next) => set_navigation_loader(next),
+					disabled: !enable_animations,
+					disabled_hint: __("Enable Animations first."),
+					icon: ICONS.loader,
 				},
 			];
 
@@ -526,6 +570,8 @@
 									cfg.key === "page_transitions" ? Boolean(next) : Boolean(page_transitions),
 								startup_animation:
 									cfg.key === "startup_animation" ? Boolean(next) : Boolean(startup_animation),
+								navigation_loader:
+									cfg.key === "navigation_loader" ? Boolean(next) : Boolean(navigation_loader),
 								transition_style,
 							};
 							frappe.show_alert(__("Saved"), 2);
@@ -603,7 +649,13 @@
 					set_page_transition_style(s.key)
 						.then((next) => {
 							frappe.show_alert(__("Saved"), 2);
-							render({ enable_animations, page_transitions, transition_style: next, startup_animation });
+							render({
+								enable_animations,
+								page_transitions,
+								transition_style: next,
+								startup_animation,
+								navigation_loader,
+							});
 							apply_local_preferences(root);
 						})
 						.catch((e) => frappe.msgprint(e?.message || e))
@@ -623,6 +675,7 @@
 			page_transitions: get_boot_page_transitions(),
 			transition_style: get_boot_page_transition_style(),
 			startup_animation: get_boot_startup_animation(),
+			navigation_loader: get_boot_navigation_loader(),
 		});
 	};
 
@@ -800,7 +853,7 @@
 			if (!is_app_path()) return false;
 			if (prefers_reduced_motion()) return false;
 			if (!to_bool(root.getAttribute("data-pastel-animations"), true)) return false;
-			if (!to_bool(root.getAttribute("data-pastel-page-transitions"), false)) return false;
+			if (!to_bool(root.getAttribute("data-pastel-navigation-loader"), true)) return false;
 			if (window.Cypress) return false;
 			return true;
 		};
@@ -832,7 +885,11 @@
 			loader.setAttribute("aria-live", "polite");
 			loader.innerHTML = `
 				<div class="pt-nav-loader-card">
-					<div class="pt-nav-loader-title">${__("Loading")}</div>
+					<div class="pt-nav-loader-mark" aria-hidden="true"></div>
+					<div class="pt-nav-loader-body">
+						<div class="pt-nav-loader-title">${__("Loading")}</div>
+						<div class="pt-nav-loader-bar" aria-hidden="true"><span></span></div>
+					</div>
 					<div class="pt-startup-dots" aria-hidden="true"><span></span><span></span><span></span></div>
 				</div>
 			`;
@@ -929,12 +986,14 @@
 	window.frappe_pastel_theme.apply_enable_animations = apply_enable_animations;
 	window.frappe_pastel_theme.apply_page_transitions = apply_page_transitions;
 	window.frappe_pastel_theme.apply_startup_animation = apply_startup_animation;
+	window.frappe_pastel_theme.apply_navigation_loader = apply_navigation_loader;
 	window.frappe_pastel_theme.apply_page_transition_style = apply_page_transition_style;
 	window.frappe_pastel_theme.set_theme = set_theme;
 	window.frappe_pastel_theme.set_font = set_font;
 	window.frappe_pastel_theme.set_enable_animations = set_enable_animations;
 	window.frappe_pastel_theme.set_page_transitions = set_page_transitions;
 	window.frappe_pastel_theme.set_startup_animation = set_startup_animation;
+	window.frappe_pastel_theme.set_navigation_loader = set_navigation_loader;
 	window.frappe_pastel_theme.set_page_transition_style = set_page_transition_style;
 	window.frappe_pastel_theme.render_theme_picker = render_theme_picker;
 	window.frappe_pastel_theme.render_font_picker = render_font_picker;
@@ -947,6 +1006,7 @@
 	apply_enable_animations(get_boot_enable_animations());
 	apply_page_transitions(get_boot_page_transitions());
 	apply_startup_animation(get_boot_startup_animation());
+	apply_navigation_loader(get_boot_navigation_loader());
 	apply_page_transition_style(get_boot_page_transition_style());
 	setup_startup_overlay();
 	setup_page_transitions();

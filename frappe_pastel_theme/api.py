@@ -110,3 +110,16 @@ def set_pastel_startup_animation(enabled: int | None = 1):
 	value = _to_check(enabled, default=1)
 	frappe.db.set_value("User", frappe.session.user, "pastel_startup_animation", value, update_modified=False)
 	return {"pastel_startup_animation": value}
+
+
+@frappe.whitelist()
+def set_pastel_navigation_loader(enabled: int | None = 1):
+	if frappe.session.user == "Guest":
+		frappe.throw(_("Not permitted"), frappe.PermissionError)
+
+	if not frappe.db.has_column("User", "pastel_navigation_loader"):
+		frappe.throw(_("Navigation loader field is missing. Please run `bench migrate`."), frappe.ValidationError)
+
+	value = _to_check(enabled, default=1)
+	frappe.db.set_value("User", frappe.session.user, "pastel_navigation_loader", value, update_modified=False)
+	return {"pastel_navigation_loader": value}

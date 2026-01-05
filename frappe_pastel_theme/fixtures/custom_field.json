@@ -70,5 +70,17 @@
 		"module": "Frappe Pastel Theme",
 		"name": "User-pastel_startup_animation",
 		"no_copy": 1
+	},
+	{
+		"doctype": "Custom Field",
+		"dt": "User",
+		"default": "1",
+		"fieldname": "pastel_navigation_loader",
+		"fieldtype": "Check",
+		"insert_after": "pastel_startup_animation",
+		"label": "Pastel Navigation Loader",
+		"module": "Frappe Pastel Theme",
+		"name": "User-pastel_navigation_loader",
+		"no_copy": 1
 	}
 ]

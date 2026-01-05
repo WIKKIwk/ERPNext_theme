@@ -42,3 +42,9 @@ def add_pastel_theme_to_bootinfo(bootinfo):
 		startup_animation = frappe.db.get_value("User", frappe.session.user, "pastel_startup_animation") or 0
 
 	bootinfo["pastel_startup_animation"] = int(startup_animation)
+
+	navigation_loader = 1
+	if frappe.db.has_column("User", "pastel_navigation_loader"):
+		navigation_loader = frappe.db.get_value("User", frappe.session.user, "pastel_navigation_loader") or 0
+
+	bootinfo["pastel_navigation_loader"] = int(navigation_loader)

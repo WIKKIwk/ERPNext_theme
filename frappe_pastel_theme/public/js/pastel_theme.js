@@ -733,8 +733,14 @@
 		if (window.__frappe_pastel_theme_page_transitions) return;
 		window.__frappe_pastel_theme_page_transitions = true;
 
+		const is_app_path = () => {
+			const path = window.location?.pathname || "";
+			return path === "/app" || path.startsWith("/app/");
+		};
+
 		const should_animate = () => {
 			const root = document.documentElement;
+			if (!is_app_path()) return false;
 			if (prefers_reduced_motion()) return false;
 			if (!to_bool(root.getAttribute("data-pastel-animations"), true)) return false;
 			if (!to_bool(root.getAttribute("data-pastel-page-transitions"), false)) return false;
@@ -780,6 +786,139 @@
 		}, 100);
 	};
 
+	const setup_navigation_loader = () => {
+		if (window.__frappe_pastel_theme_navigation_loader) return;
+		window.__frappe_pastel_theme_navigation_loader = true;
+
+		const is_app_path = () => {
+			const path = window.location?.pathname || "";
+			return path === "/app" || path.startsWith("/app/");
+		};
+
+		const should_show = () => {
+			const root = document.documentElement;
+			if (!is_app_path()) return false;
+			if (prefers_reduced_motion()) return false;
+			if (!to_bool(root.getAttribute("data-pastel-animations"), true)) return false;
+			if (!to_bool(root.getAttribute("data-pastel-page-transitions"), false)) return false;
+			if (window.Cypress) return false;
+			return true;
+		};
+
+		const get_active_page = () => {
+			const page = window.frappe?.container?.page;
+			if (page?.classList?.contains?.("page-container")) return page;
+
+			if (window.jQuery) {
+				const $page = window.jQuery(".page-container:visible").last();
+				if ($page?.length) return $page.get(0);
+			}
+
+			return document.querySelector(".page-container") || null;
+		};
+
+		const ensure_loader = () => {
+			const page = get_active_page();
+			if (!page) return null;
+
+			let loader = page.querySelector(".pt-nav-loader");
+			if (loader) return loader;
+
+			page.classList.add("pt-has-nav-loader");
+
+			loader = document.createElement("div");
+			loader.className = "pt-nav-loader";
+			loader.setAttribute("role", "status");
+			loader.setAttribute("aria-live", "polite");
+			loader.innerHTML = `
+				<div class="pt-nav-loader-card">
+					<div class="pt-nav-loader-title">${__("Loading")}</div>
+					<div class="pt-startup-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+				</div>
+			`;
+
+			page.appendChild(loader);
+			return loader;
+		};
+
+		let pending = 0;
+		let show_timer = null;
+		let active_loader = null;
+
+		const show = () => {
+			if (!should_show()) return;
+			if (pending < 1) return;
+			active_loader = ensure_loader();
+			if (!active_loader) return;
+			active_loader.classList.add("pt-nav-loader--show");
+		};
+
+		const hide = () => {
+			if (show_timer) {
+				clearTimeout(show_timer);
+				show_timer = null;
+			}
+
+			const loader = active_loader;
+			active_loader = null;
+			if (!loader) return;
+
+			loader.classList.remove("pt-nav-loader--show");
+
+			const remove = () => {
+				try {
+					loader.remove();
+				} catch (e) {
+					// ignore
+				}
+			};
+
+			loader.addEventListener("transitionend", remove, { once: true });
+			setTimeout(remove, 260);
+		};
+
+		const start = () => {
+			if (!should_show()) return;
+			pending += 1;
+			if (pending !== 1) return;
+			show_timer = setTimeout(show, 180);
+		};
+
+		const stop = () => {
+			if (pending < 1) return;
+			pending -= 1;
+			if (pending > 0) return;
+			pending = 0;
+			hide();
+		};
+
+		const patch = () => {
+			const router = window.frappe?.router;
+			if (!router?.route) return false;
+			if (router.__pastel_patched_route) return true;
+			router.__pastel_patched_route = true;
+
+			const original = router.route;
+			router.route = async function (...args) {
+				start();
+				try {
+					return await original.apply(this, args);
+				} finally {
+					stop();
+				}
+			};
+
+			return true;
+		};
+
+		if (patch()) return;
+		let tries = 0;
+		const timer = setInterval(() => {
+			tries += 1;
+			if (patch() || tries > 50) clearInterval(timer);
+		}, 100);
+	};
+
 	window.frappe_pastel_theme = window.frappe_pastel_theme || {};
 	window.frappe_pastel_theme.THEMES = THEMES;
 	window.frappe_pastel_theme.PALETTE = PALETTE;
@@ -811,6 +950,7 @@
 	apply_page_transition_style(get_boot_page_transition_style());
 	setup_startup_overlay();
 	setup_page_transitions();
+	setup_navigation_loader();
 
 	frappe.ready(() => {
 		if (!frappe?.ui?.toolbar?.add_dropdown_button) return;

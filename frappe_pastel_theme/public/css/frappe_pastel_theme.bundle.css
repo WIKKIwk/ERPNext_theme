@@ -520,6 +520,48 @@ html[data-pastel-page-transitions="1"][data-pastel-animations="1"] .page-contain
 	view-transition-name: pt-page;
 }
 
+/* Navigation loader (only inside page content, not sidebar) */
+.page-container.pt-has-nav-loader {
+	position: relative;
+}
+
+.pt-nav-loader {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	padding-top: 72px;
+	background: color-mix(in srgb, var(--bg-color) 82%, transparent);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(6px) scale(0.995);
+	transition: opacity 0.16s ease, transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+	isolation: isolate;
+}
+
+.pt-nav-loader--show {
+	opacity: 1;
+	pointer-events: auto;
+	transform: translateY(0) scale(1);
+}
+
+.pt-nav-loader-card {
+	border: 1px solid color-mix(in srgb, var(--primary) 14%, var(--border-color));
+	background: color-mix(in srgb, var(--card-bg) 92%, var(--bg-color));
+	border-radius: 16px;
+	padding: 12px 14px;
+	box-shadow: var(--shadow-md);
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.pt-nav-loader-title {
+	font-weight: 700;
+	letter-spacing: 0.2px;
+}
+
 html[data-pastel-page-transitions="1"][data-pastel-animations="1"]::view-transition-old(root),
 html[data-pastel-page-transitions="1"][data-pastel-animations="1"]::view-transition-new(root) {
 	animation: none;
